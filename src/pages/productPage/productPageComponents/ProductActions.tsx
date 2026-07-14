@@ -1,9 +1,10 @@
-import { CircleDollarSign, ShoppingBasket } from "lucide-react";
-import { AddToFavoriteButton } from "@/pages";
-import type { Product } from "@/types/types.ts";
-import { useTranslation } from "react-i18next";
+import {CircleDollarSign, Heart, ShoppingBasket} from "lucide-react";
+import type {Product} from "@/types/types.ts";
+import {useTranslation} from "react-i18next";
 
 import * as S from "../ProductPageStyle";
+import {useAppDispatch, useAppSelector} from "@/hooks";
+import {toggleFavorite} from "@/app/appSlice.ts";
 
 interface ProductActionsProps {
     existsInCart: boolean;
@@ -18,7 +19,15 @@ export const ProductActions = ({
                                    onRemove,
                                    data,
                                }: ProductActionsProps) => {
+    const favorites = useAppSelector(state => state.app.favorites);
+    const exists = favorites.find((favorite) => favorite === data.id);
+    const theme = useAppSelector(state => state.app.themeMode);
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
+
+    const favoriteToggle = () => {
+        dispatch(toggleFavorite(data.id))
+    }
 
     return (
         <S.ActionsSection>
@@ -39,8 +48,17 @@ export const ProductActions = ({
                 )}
             </S.PrimaryActionButton>
 
-            <AddToFavoriteButton product={data} />
-
+            <S.FavoriteProductButton
+                active={!!exists}
+                onClick={favoriteToggle}
+                aria-label="Toggle favorite"
+            >
+                <Heart
+                    size={"22"}
+                    fill={exists ? "red" : "none"}
+                    color={exists ? "red" : theme === "light" ? "black" : "white"}
+                />
+            </S.FavoriteProductButton>
         </S.ActionsSection>
     );
 };

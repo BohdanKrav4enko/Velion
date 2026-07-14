@@ -26,6 +26,11 @@ export const OrderCard = styled.div`
     &:hover {
         box-shadow: 0 12px 40px ${({ theme }) => theme.colors.shadow};
     }
+
+    @media (max-width: 768px) {
+        padding: 12px;
+        border-radius: 16px;
+    }
 `;
 export const OrderTop = styled.div`
     display: flex;
@@ -229,8 +234,11 @@ export const ProductCard = styled.div`
     }
 
     @media (max-width: 768px) {
-        flex-direction: column;
         align-items: flex-start;
+
+        gap: 12px;
+        padding: 12px;
+        border-radius: 12px;
     }
 `;
 export const ProductLeft = styled.div`
@@ -278,11 +286,17 @@ export const ProductTotal = styled.div`
 `;
 export const OrderSection = styled.section`
     padding: 32px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     border-top: 1px solid ${({ theme }) => theme.colors.border};
 
     &:first-child {
         border-top: none;
+    }
+
+    @media (max-width: 768px) {
+        padding: 4px;
     }
 `;
 export const SectionTitle = styled.h3`
@@ -481,6 +495,12 @@ export const StatCard = styled.div`
 
         box-shadow: 0 16px 40px ${({ theme }) => theme.colors.shadow};
     }
+
+    @media (max-width: 768px) {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 16px;
+    }
 `;
 
 export const StatValue = styled.div`
@@ -503,7 +523,6 @@ export const ActionsContainer = styled.div`
 
     gap: 16px;
 
-    margin-top: 32px;
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -512,9 +531,12 @@ export const ActionsContainer = styled.div`
 `;
 export const ActionsGroup = styled.div`
     display: flex;
-    flex-wrap: wrap;
-
     gap: 12px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        width: 100%;
+    }
 `;
 export const StatusButton = styled.button<StatusButtonProps>`
     height: 44px;
@@ -561,6 +583,9 @@ export const StatusButton = styled.button<StatusButtonProps>`
 
     &:hover {
         transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+        width: 100%;
     }
 `;
 export const DeleteButton = styled.button`

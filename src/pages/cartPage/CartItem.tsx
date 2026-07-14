@@ -41,7 +41,7 @@ export const CartItem = ({
                 <X size={16}/>
             </S.RemoveButton>
 
-            <Link to={`/product/${item.id}`}>
+            <Link to={`/product/${item.slug}`}>
                 <S.ProductImage
                     src={item.images[0]}
                     alt={item.title}

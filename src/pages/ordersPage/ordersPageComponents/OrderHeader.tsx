@@ -32,11 +32,11 @@ export const HeaderButton = styled.button`
 
     gap: 10px;
 
-    border: 1px solid #e5e7eb;
+    border: 1px solid ${({ theme }) => theme.colors.border};
     border-radius: 12px;
 
-    background: white;
-    color: #111827;
+    background: ${({ theme }) => theme.colors.surface};
+    color: ${({ theme }) => theme.colors.text};
 
     font-size: 14px;
     font-weight: 600;
@@ -57,13 +57,13 @@ export const HeaderButton = styled.button`
     }
 
     &:hover {
-        background: #f9fafb;
+        background: ${({ theme }) => theme.colors.surfaceSecondary};
 
-        border-color: #d1d5db;
+        border-color: ${({ theme }) => theme.colors.border};
 
         transform: translateY(-2px);
 
-        box-shadow: 0 8px 20px rgba(0,0,0,.06);
+        box-shadow: 0 8px 20px ${({ theme }) => theme.colors.shadow};
     }
 
     &:active {

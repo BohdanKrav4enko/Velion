@@ -6,11 +6,13 @@ import * as S from "./ProductPageStyle"
 import {ArrowLeft} from "lucide-react";
 import {ProductActions, ProductHeader, ProductMetaInfo, ProductShare} from "@/pages";
 import img from "../../assets/placeholder.webp";
+import {formatDate} from "@/utils/formatDate.ts";
+import i18n from "i18next";
 
 export const ProductPage = () => {
     const navigate = useNavigate();
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const {
         data,
@@ -26,16 +28,16 @@ export const ProductPage = () => {
         isError
     } = useProductPage();
 
-    if (isLoading) return <ProductPageSkeleton />;
+    if (isLoading) return <ProductPageSkeleton/>;
 
     if (isError || !data) {
-        navigate(PATH.ERROR_PAGE, { replace: true });
+        navigate(PATH.ERROR_PAGE, {replace: true});
         return null;
     }
 
     return (
         <S.ProductContainer>
-            <Breadcrumbs />
+            <Breadcrumbs/>
 
             <S.ProductLayout>
 
@@ -52,7 +54,7 @@ export const ProductPage = () => {
                     <ProductHeader
                         title={data.title}
                         admin={admin}
-                        productId={data.id}
+                        slug={data.slug}
                     />
 
                     <ProductMetaInfo
@@ -71,7 +73,27 @@ export const ProductPage = () => {
                         onShare={handleShare}
                         onCopy={handleCopyLink}
                     />
+                    <S.ProductDates>
+                        <S.DateItem>
+                            <S.DateLabel>
+                                {t("Added")}
+                            </S.DateLabel>
 
+                            <S.DateValue>
+                                {formatDate(data.creationAt, i18n.language)}
+                            </S.DateValue>
+                        </S.DateItem>
+
+                        <S.DateItem>
+                            <S.DateLabel>
+                                {t("Updated")}
+                            </S.DateLabel>
+
+                            <S.DateValue>
+                                {formatDate(data.updatedAt, i18n.language)}
+                            </S.DateValue>
+                        </S.DateItem>
+                    </S.ProductDates>
                 </S.ProductInfo>
 
             </S.ProductLayout>
@@ -86,10 +108,10 @@ export const ProductPage = () => {
                 </S.ProductDescription>
             </S.DescriptionSection>
 
-            <S.BackButton  onClick={handleBack}>
-                <ArrowLeft size={18} />
+            <S.BackButton onClick={handleBack}>
+                <ArrowLeft size={18}/>
                 {t("Back")}
-            </S.BackButton >
+            </S.BackButton>
         </S.ProductContainer>
     );
 };

@@ -119,7 +119,7 @@ export const MetaValue = styled.span`
     font-size: 15px;
 `;
 export const CategoryChangeButton = styled.button`
-    margin-right: 2px;
+    margin-right: 6px;
     
     border: none;
 
@@ -238,11 +238,56 @@ export const FavoriteButton = styled.button<{ active: boolean }>`
         background: rgba(239, 68, 68, .14);
     }
 `;
+export const FavoriteProductButton = styled.button<{ active: boolean }>`
+    height: 64px;
+    flex-shrink: 0;
+    flex-grow: 1;
+
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    border-radius: 6px;
+
+    background: ${({ theme }) => theme.colors.surface};
+    color: ${({ theme }) => theme.colors.text};
+
+    cursor: pointer;
+
+    transition:
+            transform .2s ease,
+            background .2s ease,
+            border-color .2s ease,
+            color .2s ease,
+            box-shadow .2s ease;
+
+
+    &:hover {
+        background: rgba(239, 68, 68, .08);
+
+        border-color: rgba(239, 68, 68, .25);
+
+        color: ${({ theme }) => theme.colors.danger};
+
+        transform: translateY(-2px);
+
+        box-shadow:
+                0 6px 16px rgba(239, 68, 68, .15);
+    }
+
+    &:active {
+        transform: translateY(0);
+
+        background: rgba(239, 68, 68, .14);
+    }
+`;
 export const ProductContainer = styled.div`
     max-width: 1400px;
+
     margin: 0 auto;
 
-    padding: 120px 20px 80px;
+    padding: 50px 24px 64px;
+
+    @media (max-width: 768px) {
+        padding: 10px 16px 48px;
+    }
 `;
 export const ProductLayout = styled.div`
     display: grid;
@@ -412,4 +457,34 @@ export const SecondaryActionButton = styled.button`
     &:active {
         transform: translateY(0);
     }
+`;
+export const ProductDates = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 24px;
+    padding-top: 24px;
+
+    border-top: 1px solid ${({ theme }) => theme.colors.border};
+`;
+export const DateItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 16px;
+`;
+export const DateLabel = styled.span`
+    color: ${({ theme }) => theme.colors.textSecondary};
+
+    font-size: 14px;
+    font-weight: 500;
+`;
+export const DateValue = styled.span`
+    color: ${({ theme }) => theme.colors.text};
+
+    font-size: 14px;
+    font-weight: 600;
 `;

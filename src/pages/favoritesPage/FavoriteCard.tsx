@@ -23,7 +23,7 @@ export const FavoriteCard = ({
             <S.ImageWrapper>
 
                 <Link
-                    to={`/product/${item.id}`}
+                    to={`/product/${item.slug}`}
                     onClick={onClose}
                 >
                     <S.Image
@@ -41,7 +41,7 @@ export const FavoriteCard = ({
             <S.Content>
 
                 <S.TitleLink
-                    to={`/product/${item.id}`}
+                    to={`/product/${item.slug}`}
                     onClick={onClose}
                 >
                     {item.title}

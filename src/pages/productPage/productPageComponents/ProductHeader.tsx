@@ -7,13 +7,13 @@ import * as S from "../ProductPageStyle";
 interface ProductHeaderProps {
     title: string;
     admin: boolean;
-    productId: number;
+    slug: string;
 }
 
 export const ProductHeader = ({
                                   title,
                                   admin,
-                                  productId,
+                                  slug,
                               }: ProductHeaderProps) => {
     const { t } = useTranslation();
 
@@ -26,7 +26,7 @@ export const ProductHeader = ({
 
             {admin && (
                 <S.AdminActions>
-                    <Link to={`/edit-product/${productId}`}>
+                    <Link to={`/edit-product/${slug}`}>
                         <S.AdminButton>
                             <Pen size={16} />
                             {t("Edit product")}

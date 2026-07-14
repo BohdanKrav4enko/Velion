@@ -1,53 +1,107 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetProductByIdQuery } from "@/api/productsApi.ts";
+import { useGetProductBySlugQuery } from "@/api/productsApi.ts";
 import { useCart, useAppDispatch, useAppSelector } from "./index.ts";
 import { setCategory, setNotification } from "@/app/appSlice.ts";
-import {useTranslation} from "react-i18next";
-import {addCart, removeCart} from "@/app/cartSlice.ts";
+import { useTranslation } from "react-i18next";
+import { addCart, removeCart } from "@/app/cartSlice.ts";
 
 export const useProductPage = () => {
-    const { id } = useParams();
-    const productId = Number(id);
-    const { data, isLoading, isError} = useGetProductByIdQuery({ id: productId });
+    const { slug } = useParams();
+
+    const {
+        data,
+        isLoading,
+        isError,
+    } = useGetProductBySlugQuery(
+        { slug: slug! },
+        { skip: !slug }
+    );
+
     const { inCart } = useCart();
+
     const navigate = useNavigate();
+
     const dispatch = useAppDispatch();
-    const admin = useAppSelector(state => state.app.isAdmin);
+
+    const admin = useAppSelector(
+        state => state.app.isAdmin
+    );
+
     const { t } = useTranslation();
 
-    const existsInCart = data ? !!inCart(data.id) : false;
+    const existsInCart = data
+        ? !!inCart(data.id)
+        : false;
 
     const handleChangeCategory = () => {
         if (!data?.category) return;
-        dispatch(setCategory(data.category.id));
+
+        dispatch(
+            setCategory(data.category.id)
+        );
+
         navigate(-1);
     };
+
     const handleAddToCart = () => {
         if (!data) return;
+
         dispatch(addCart(data));
-        dispatch(setNotification({
-            message: t("The product has been successfully added to your cart"),
-            type: "success",
-            duration: 1500
-        }));
+
+        dispatch(
+            setNotification({
+                message: t(
+                    "The product has been successfully added to your cart"
+                ),
+                type: "success",
+                duration: 1500,
+            })
+        );
     };
+
     const handleRemoveFromCart = () => {
         if (!data) return;
+
         dispatch(removeCart(data.id));
     };
+
     const handleShare = async () => {
-        if (!navigator.share || !data) return;
+        if (!navigator.share || !data)
+            return;
+
         try {
-            await navigator.share({ title: `${data.title}: ${data.description}`, url: window.location.href });
+            await navigator.share({
+                title: `${data.title}: ${data.description}`,
+                url: window.location.href,
+            });
         } catch {
-            dispatch(setNotification({ message: t("Unknown Error"), type: "error" }));
+            dispatch(
+                setNotification({
+                    message: t("Unknown Error"),
+                    type: "error",
+                })
+            );
         }
     };
+
     const handleCopyLink = () => {
         if (!data) return;
-        navigator.clipboard.writeText(window.location.href);
-        dispatch(setNotification({ message: t("The link was copied successfully"), type: "info", duration: 1500 }));
+
+        navigator.clipboard.writeText(
+            window.location.href
+        );
+
+        dispatch(
+            setNotification({
+                message: t(
+                    "The link was copied successfully"
+                ),
+                type: "info",
+                duration: 1500,
+            })
+        );
     };
+
     const handleBack = () => navigate(-1);
 
     return {

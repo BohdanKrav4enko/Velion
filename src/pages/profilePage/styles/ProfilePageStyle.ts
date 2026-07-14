@@ -202,10 +202,7 @@ export const ProfileButton = styled.button`
 
     cursor: pointer;
 
-    transition:
-            background .12s ease,
-            border-color .12s ease;
-
+    transition: .2s ease;
     svg {
         width: 17px;
         height: 17px;
@@ -214,7 +211,8 @@ export const ProfileButton = styled.button`
     }
 
     &:hover {
-        background: ${({ theme }) => theme.colors.surfaceSecondary};
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px ${({ theme }) => theme.colors.shadow};
     }
 
     &:disabled {
@@ -250,10 +248,8 @@ export const ProfileSecondaryButton = styled.button`
 
     cursor: pointer;
 
-    transition:
-            background .12s ease,
-            border-color .12s ease;
-
+    transition: .2s ease;
+    
     svg {
         width: 17px;
         height: 17px;
@@ -262,6 +258,7 @@ export const ProfileSecondaryButton = styled.button`
     }
 
     &:hover {
+        transform: translateY(-2px);
         background: ${({ theme }) => theme.colors.surfaceSecondary};
         border-color: ${({ theme }) => theme.colors.textMuted};
     }
@@ -294,9 +291,7 @@ export const ProfileLogOutButton = styled.button`
 
     cursor: pointer;
 
-    transition:
-            background .12s ease,
-            border-color .12s ease;
+    transition: .2s ease;
 
     svg {
         width: 17px;
@@ -306,6 +301,7 @@ export const ProfileLogOutButton = styled.button`
     }
 
     &:hover {
+        transform: translateY(-2px);
         background: ${({ theme }) => theme.colors.surfaceSecondary};
         border-color: ${({ theme }) => theme.colors.danger};
     }

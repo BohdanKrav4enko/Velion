@@ -12,7 +12,7 @@ export const SearchItem = ({ item }: Props) => {
         <S.SearchItemContainer>
 
             <S.ProductLink
-                to={`/product/${item.id}`}
+                to={`/product/${item.slug}`}
                 aria-label={`View details of ${item.title}`}
             >
                 <S.ProductImage

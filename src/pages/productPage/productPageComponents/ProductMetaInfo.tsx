@@ -28,10 +28,12 @@ export const ProductMetaInfo = ({data}: ProductMetaInfoProps) => {
                     {t("Category")}
                 </S.MetaLabel>
 
-                {data.category ? (
-                    <S.CategoryChangeButton>
-                        {data.category.name}
-                    </S.CategoryChangeButton>
+                {data.category ? (<div>
+                        <S.CategoryChangeButton>
+                            {data.category.name}
+                        </S.CategoryChangeButton>
+                    </div>
+
                 ) : (
                     <S.MetaValue>
                         {t("Unknown")}

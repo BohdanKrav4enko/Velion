@@ -10,7 +10,7 @@ export const ProductCard = ({product}: { product: Product }) => {
 
     return (
         <S.ProductCardContainer>
-            <Link to={`/product/${product.id}`} aria-label={`Go to ${product.title} page`}>
+            <Link to={`/product/${product.slug}`} aria-label={`Go to ${product.title} page`}>
                 <S.ProductImageWrapper>
                     <img
                         src={product.images[0]}
