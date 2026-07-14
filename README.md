@@ -196,6 +196,12 @@ This project was created as a frontend portfolio project to demonstrate:
 
 Frontend Developer
 
+GitHub:
+https://github.com/BohdanKrav4enko
+
+Portfolio:
+https://bohdankrav4enko.vercel.app/
+
 ---
 
 ## 📄 License
