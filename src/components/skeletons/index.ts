@@ -1,0 +1,6 @@
+export {Skeleton} from './Skeleton'
+export {FavoritePageSkeleton} from './FavoritePageSkeleton.tsx'
+export {ProductPageSkeleton} from './ProductPageSkeleton'
+export {ProductSkeletonGrid} from './ProductSkeletonGrid'
+export {SearchBarSkeleton} from './SearchBarSkeleton.tsx'
+export {GreetingsSkeleton} from './GreetingsSkeleton.tsx'
