@@ -10,6 +10,9 @@ export const FooterContainer = styled.footer`
     background: #111827;
 
     border-top: 1px solid #334155;
+    @media (max-width: 1024px) {
+        padding-bottom: 88px;
+    }
 `;
 
 
