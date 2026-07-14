@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components";
+import {Skeleton} from "@/components";
 import styled from "styled-components";
 
 
@@ -14,17 +14,17 @@ const Wrapper = styled.div`
     margin: 0 auto;
 
 
-    @media(max-width:1200px){
-        max-width:520px;
+    @media (max-width: 1200px) {
+        max-width: 520px;
     }
 
 
-    @media(max-width:992px){
-        order:3;
+    @media (max-width: 992px) {
+        order: 3;
 
-        max-width:none;
+        max-width: none;
 
-        width:100%;
+        width: 100%;
     }
 `;
 

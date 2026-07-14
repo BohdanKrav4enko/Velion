@@ -1,4 +1,4 @@
-import { Skeleton } from "./Skeleton";
+import {Skeleton} from "./Skeleton";
 import styled from "styled-components";
 
 
@@ -8,6 +8,11 @@ const Container = styled.div`
     margin: 0 auto;
 
     padding: 120px 20px 80px;
+
+
+    @media (max-width: 768px) {
+        padding: 80px 20px 60px;
+    }
 `;
 
 
@@ -24,66 +29,79 @@ const Layout = styled.div`
     gap: 60px;
 
 
-    @media(max-width:1100px){
-        grid-template-columns:1fr;
-        gap:40px;
+    @media (max-width: 1100px) {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
     }
 `;
 
 
 const Gallery = styled.div`
-    width:100%;
+    width: 100%;
 `;
 
 
 const Info = styled.div`
-    display:flex;
+    display: flex;
 
-    flex-direction:column;
+    flex-direction: column;
 
-    gap:28px;
+    gap: 28px;
 `;
 
 
 const MetaBox = styled.div`
-    display:flex;
+    display: flex;
 
-    flex-direction:column;
+    flex-direction: column;
 
-    gap:18px;
+    gap: 18px;
 
-    padding:32px;
+    padding: 32px;
 
-    background:#fafafa;
 
-    border:1px solid #ececec;
+    background: ${({theme}) => theme.colors.surface};
 
-    border-radius:6px;
+
+    border: 1px solid ${({theme}) => theme.colors.border};
+
+    border-radius: 6px;
 `;
 
 
 const Actions = styled.div`
-    display:flex;
+    display: flex;
 
-    gap:16px;
+    gap: 16px;
 `;
 
 
 const Description = styled.div`
-    margin-top:60px;
+    display: flex;
 
-    padding:40px;
+    flex-direction: column;
 
-    border:1px solid #ececec;
+    gap: 20px;
 
-    border-radius:6px;
+    margin-top: 60px;
+
+    padding: 40px;
 
 
-    display:flex;
+    background: ${({theme}) => theme.colors.surface};
 
-    flex-direction:column;
 
-    gap:20px;
+    border: 1px solid ${({theme}) => theme.colors.border};
+
+    border-radius: 6px;
+
+
+    @media (max-width: 768px) {
+        margin-top: 40px;
+
+        padding: 24px;
+    }
 `;
 
 
@@ -93,10 +111,12 @@ export const ProductPageSkeleton = () => {
 
 
             <BreadcrumbSkeleton>
+
                 <Skeleton
                     width="220px"
                     height="20px"
                 />
+
             </BreadcrumbSkeleton>
 
 
@@ -104,10 +124,10 @@ export const ProductPageSkeleton = () => {
             <Layout>
 
 
-                {/* Image */}
                 <Gallery>
 
                     <Skeleton
+                        width="100%"
                         height="650px"
                     />
 
@@ -122,6 +142,7 @@ export const ProductPageSkeleton = () => {
                         width="85%"
                         height="52px"
                     />
+
 
 
                     <Skeleton
@@ -140,6 +161,7 @@ export const ProductPageSkeleton = () => {
                         />
 
 
+
                         <Skeleton
                             width="220px"
                             height="55px"
@@ -153,6 +175,7 @@ export const ProductPageSkeleton = () => {
                         />
 
 
+
                         <Skeleton
                             width="150px"
                             height="36px"
@@ -160,7 +183,6 @@ export const ProductPageSkeleton = () => {
 
 
                     </MetaBox>
-
 
 
 
@@ -172,11 +194,11 @@ export const ProductPageSkeleton = () => {
                         />
 
 
+
                         <Skeleton
                             width="64px"
                             height="64px"
                         />
-
 
                     </Actions>
 
@@ -188,6 +210,8 @@ export const ProductPageSkeleton = () => {
                             width="100%"
                             height="56px"
                         />
+
+
 
                         <Skeleton
                             width="100%"
@@ -204,7 +228,9 @@ export const ProductPageSkeleton = () => {
 
 
 
+
             <Description>
+
 
                 <Skeleton
                     width="220px"
@@ -212,15 +238,20 @@ export const ProductPageSkeleton = () => {
                 />
 
 
+
                 <Skeleton
                     width="100%"
                     height="22px"
                 />
 
+
+
                 <Skeleton
                     width="95%"
                     height="22px"
                 />
+
+
 
                 <Skeleton
                     width="80%"
@@ -229,7 +260,6 @@ export const ProductPageSkeleton = () => {
 
 
             </Description>
-
 
 
         </Container>

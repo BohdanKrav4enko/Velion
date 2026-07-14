@@ -71,7 +71,8 @@ export const CategoryTitle = styled.h2`
     color: ${({ theme }) => theme.colors.text};
 `;
 export const ControlButton = styled.button`
-
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;

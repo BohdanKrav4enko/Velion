@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Skeleton } from "@/components";
+import {Skeleton} from "@/components";
+
 
 const Wrapper = styled.div`
     display: flex;
@@ -17,10 +18,12 @@ const Wrapper = styled.div`
 export const GreetingsSkeleton = () => {
     return (
         <Wrapper>
+
             <Skeleton
                 width="240px"
                 height="30px"
             />
+
         </Wrapper>
     );
 };
